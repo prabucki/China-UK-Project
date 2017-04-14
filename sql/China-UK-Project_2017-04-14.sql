@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.34)
 # Database: China-UK-Project
-# Generation Time: 2017-04-14 01:34:20 +0000
+# Generation Time: 2017-04-14 02:02:11 +0000
 # ************************************************************
 
 
@@ -20,14 +20,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table Questions
+# Dump of table questions_china
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Questions`;
+DROP TABLE IF EXISTS `questions_china`;
 
-CREATE TABLE `Questions` (
+CREATE TABLE `questions_china` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `region` varchar(10) DEFAULT NULL,
   `type` varchar(50) NOT NULL,
   `question` varchar(100) DEFAULT NULL,
   `answer1` varchar(50) DEFAULT NULL,
@@ -37,16 +36,35 @@ CREATE TABLE `Questions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `Questions` WRITE;
-/*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
 
-INSERT INTO `Questions` (`id`, `region`, `type`, `question`, `answer1`, `answer2`, `answer3`, `answer4`)
+
+# Dump of table questions_uk
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `questions_uk`;
+
+CREATE TABLE `questions_uk` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(50) NOT NULL,
+  `question` varchar(100) DEFAULT NULL,
+  `answer1` varchar(50) DEFAULT NULL,
+  `answer2` varchar(50) DEFAULT NULL,
+  `answer3` varchar(50) DEFAULT NULL,
+  `answer4` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `questions_uk` WRITE;
+/*!40000 ALTER TABLE `questions_uk` DISABLE KEYS */;
+
+INSERT INTO `questions_uk` (`id`, `type`, `question`, `answer1`, `answer2`, `answer3`, `answer4`)
 VALUES
-	(1,'UK','Multiple','What is the biggest castle in the UK?','WIndsor','Dover','Kenilworth','Tintagel'),
-	(2,'UK','Multiple','At what age you can legally buy alcohol in the UK','18','21','30','10'),
-	(3,'UK','Multiple','What is the tallest point in the UK?','Ben Nevis','Kilamanjaro','Everest','Alps');
+	(1,'Multiple','What is the biggest castle in the UK?','WIndsor','Dover','Kenilworth','Tintagel'),
+	(2,'Multiple','At what age you can legally buy alcohol in the UK','18','21','30','10'),
+	(3,'Multiple','What is the tallest point in the UK?','Ben Nevis','Kilamanjaro','Everest','Alps'),
+	(4,'YesNo','Is London the biggest city in UK by population?','YES',NULL,NULL,NULL);
 
-/*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
+/*!40000 ALTER TABLE `questions_uk` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

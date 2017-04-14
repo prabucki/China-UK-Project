@@ -20,6 +20,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$data['question'] = $this->queries->get_question_info(1);
+		var_dump($data['question']);
 		$this->load->view('welcome_message');
 	}
 }
