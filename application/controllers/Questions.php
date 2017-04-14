@@ -21,5 +21,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
+		$question = $this->db->get_where('questions_uk', array('id' => 1));
+		var_dump($query);
 	}
 }
