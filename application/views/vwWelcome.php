@@ -57,7 +57,8 @@
                     <div class="jumbotron" align="centre">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2> Game One</h2>
+                                <h2>Multiple Choice</h2>
+                                Test your knowledge about culture choosing the correct answer from 4 options. Only one answer is correct!
                             </div>
                                 <div class="col-md-6">
                                     <div class="container">
@@ -76,7 +77,8 @@
                     <div class="jumbotron" align="centre">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2>Game Two</h2>
+                                <h2>True or False</h2>
+                                Verify whether the statements given about chosen culture are true or false.
                             </div>
                             <div class="col-md-6">
                                 <div class="container">
@@ -95,7 +97,8 @@
                     <div class="jumbotron" align="centre">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2>Game Three</h2>
+                                <h2>Picture Questions</h2>
+                                Test your photographic memory by matching the right picture to the right title.
                             </div>
                             <div class="col-md-6">
                                 <div class="container">

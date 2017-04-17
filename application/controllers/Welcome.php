@@ -35,7 +35,7 @@ class Welcome extends CI_Controller {
 		if($result['type'] == 'Multiple'){
 			$this->load->view('multiple',$result);
 		}else{
-			$this->load->view('trueOrFalse',$result);
+			$this->load->view('trueOrFalse',$result); //test commit
 		}
 	}
 
