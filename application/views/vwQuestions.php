@@ -73,7 +73,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="body">
 	</div>
 	<a href="/Questions/Nextquestion" class="btn">Next Question</a>
-	<a href="/membership/activate/2" class="btn">temp</a>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 
