@@ -1,34 +1,41 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Questions extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
-		echo 'YEY!!!!!!';
-		$this->load->view('welcome_message');
-		
-		$question_id = 1;
-		$question = $this->queries->get_question_info($question_id, 'UK');
-		$number = $this->queries->get_questions_number('UK');
+		//THIS PART SHOULD RUN ONLY AT FIRST ITERATION
+		$data['number'] = $this->queries->get_questions_number('UK');
 
-		echo $question['type'];
+		// Filling Available Questions with IDs
+		$data['available'] = range(1,$data['number'],1);
+		shuffle($data['available']);
+		echo implode($data['available']);
 
-		echo $number;
+		$this->nextQuestion($data);
+
+	}
+
+	public function nextQuestion($data)
+	{
+		$data['question_id'] = $data['available'][0];
+		$data['question'] = $this->queries->get_question_info($data['question_id'], 'UK');
+
+		//Display
+		?><br>QuestionID: <?php
+		echo $data['question_id']; 
+		?><br>Question: <?php
+		echo $data['question']['question'];
+
+		unset($data['available'][0]);
+
+		?> <br> <?php
+		echo implode($data['available']);
+
+		$this->load->view('vwQuestions', $data);
+		//echo $question['type'];
+
+		//echo $number;
 	}
 }
