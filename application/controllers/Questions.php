@@ -10,19 +10,22 @@ class Questions extends CI_Controller {
 		$data['mode'] = 'UK';
 		$data['mode2'] = 'Multiple';
 
-		// Collecting appropriate questions from 
+		// Collecting appropriate questions from the database
 		$available = $this->queries-> get_question_ids($data['mode'] ,$data['mode2']);		
 		$data['available'] = [];
 
-		// Change to 
+		// Change array elements to integers
 		foreach ($available as $each_number) {
 			array_push($data['available'], (int) $each_number['id']);
 		}
 
-		?><br>RESULT: <?php
+		//Shuffle the question order
 		shuffle($data['available']);
-		echo implode($data['available']);
 
+		?><br>RESULT: <?php
+		echo implode($data['available']);
+		?><br>Size <?php
+		echo sizeof($data['available']);
 
 		$this->nextQuestion($data);
 
@@ -30,21 +33,25 @@ class Questions extends CI_Controller {
 
 	public function nextQuestion($data)
 	{
-		$data['question_id'] = $data['available'][0];
-		$data['question'] = $this->queries->get_question_info($data['question_id'], 'UK'); // Set next question from array
+		// Load end view
+		if (sizeof($data['available']) == 0):
+			$this->load->view('vwFinish', $data);
 
-		//Display (temporary)
-		?><br>QuestionID: <?php
-		echo $data['question_id']; 
-		?><br>Question: <?php
-		echo $data['question']['question'];
+		else:
 
+			$data['question_id'] = $data['available'][0];
+			$data['question'] = $this->queries->get_question_info($data['question_id'], 'UK'); // Set next question from array
 
-		unset($data['available'][0]);	// Delete current question from array
+			//Display (temporary)
+			?><br>QuestionID: <?php
+			echo $data['question_id']; 
+			?><br>Question: <?php
+			echo $data['question']['question'];
 
-		$this->load->view('vwQuestions', $data);
-		//echo $question['type'];
+			unset($data['available'][0]);	// Delete current question from array
+			
+			$this->load->view('vwQuestions', $data);
 
-		//echo $number;
+		endif;
 	}
 }
