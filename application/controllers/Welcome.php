@@ -65,4 +65,8 @@ class Welcome extends CI_Controller {
 			$this->load->view('', $score);     //load the result view
 		}
 	}
+
+	public function selectMixQuestions(){
+
+	}
 }
