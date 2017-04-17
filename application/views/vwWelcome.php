@@ -28,8 +28,7 @@
 
 			$("#gameOneMix").click(function(){
 				var score = 0;
-				//var region = "UK";
-				//window.location.href="selectQuestions?score="+score+"&region="+region;
+				window.location.href="selectMixQuestions?score="+score;
 			});
 		});
 	</script>
