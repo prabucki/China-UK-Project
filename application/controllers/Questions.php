@@ -50,7 +50,7 @@ class Questions extends CI_Controller {
 
 			unset($data['available'][0]);	// Delete current question from array
 			
-			$this->load->view('vwQuestions', $data);
+			$this->load->view('multiple', $data);
 
 		endif;
 	}
