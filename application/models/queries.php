@@ -26,4 +26,24 @@ class Queries extends CI_Model {
         endif;
         return $query->num_rows();
     }
+
+    public function get_type_number($region, $type) {
+        if($region == 'China'):
+            $query = $this->db->query("SELECT * FROM `questions_china` WHERE type = '$type'");
+        elseif($region == 'UK'):
+            $query = $this->db->query("SELECT * FROM `questions_uk` WHERE type = '$type'");
+        endif;
+        return $query->num_rows();
+    }
+
+
+    public function get_question_ids($region, $type) {
+        if($region == 'China'):
+             $query = $this->db->query("SELECT id FROM `questions_china` WHERE type = '$type'");
+        elseif($region == 'UK'):
+             $query = $this->db->query("SELECT id FROM `questions_uk` WHERE type = '$type'");
+        endif;
+        return $query->result_array();
+    }
+
 }
