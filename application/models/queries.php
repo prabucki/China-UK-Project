@@ -46,4 +46,13 @@ class Queries extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_question_answer($questionId, $region){
+        if($region == 'China'):
+            $query = $this->db->query("SELECT * FROM `questions_china` WHERE id = '$questionId'");
+        elseif($region == 'UK'):
+            $query = $this->db->query("SELECT * FROM `questions_uk` WHERE id = '$questionId'");
+        endif;
+        return $query->row_array();
+    }
+
 }

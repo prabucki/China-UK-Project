@@ -12,7 +12,7 @@ class Questions extends CI_Controller {
 
 		// Collecting appropriate questions from the database
 		$available = $this->queries-> get_question_ids($data['mode'] ,$data['mode2']);		
-		$data['available'] = [];
+		$data['available'] = array();
 
 		// Change array elements to integers
 		foreach ($available as $each_number) {
@@ -21,6 +21,7 @@ class Questions extends CI_Controller {
 
 		//Shuffle the question order
 		shuffle($data['available']);
+		echo sizeof($data['available']);
 
 		?><br>RESULT: <?php
 		echo implode($data['available']);
@@ -28,14 +29,13 @@ class Questions extends CI_Controller {
 		echo sizeof($data['available']);
 
 		$this->nextQuestion($data);
-
 	}
 
 	public function nextQuestion($data)
 	{
 		// Load end view
 		if (sizeof($data['available']) == 0):
-			$this->load->view('vwFinish', $data);
+			$this->load->view('multiple', $data);
 
 		else:
 
@@ -54,4 +54,5 @@ class Questions extends CI_Controller {
 
 		endif;
 	}
+
 }

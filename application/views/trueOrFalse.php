@@ -54,8 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!--The no. and questions here-->
         <div class="form-group">
             <label class="col-lg-2 control-label input-lg" id="no"><h2>1.</h2></label>
-            <label class="col-lg-7 control-label input-lg" name="question"><h2>The readition of giving red envelopes to
-                    junior people during Spring Festival is for protection against evil originally.</h2></label>
+            <label class="col-lg-7 control-label input-lg" name="question"><h2><?php echo $question;?></h2></label>
         </div>
         <div class="blankRow"></div>
         <div class="form-group">

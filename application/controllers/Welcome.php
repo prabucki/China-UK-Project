@@ -20,7 +20,56 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('vwWelcome');//load welcome screen
+	}
+
+	public function log(){
 		$this->load->view('vwWelcome');
+	}
+
+	public function selectQuestions(){
+		$count = 0;
+		$score = $this->input->get('score');
+		$region = $this->input->get('region');
+		$question_id = rand(1, 24);
+		$result = $this->queries->get_question_info($question_id, $region);
+		$result['score'] = $score;
+		$result['region'] = $region;
+		$result['count'] = $count;
+		//var_dump($result);
+		if($result['type'] == 'Multiple'){
+			$this->load->view('multiple',$result);
+			//echo $result['question'];
+		}else{
+			$this->load->view('trueOrFalse',$result);
+		}
+	}
+
+	public function nextQuestions(){
+		$questionId = $this->input->get('questionId');
+		$score = $this->input->get('score');
+		$region = $this->input->get('region');
+		$answer = $this->input->get('answer');
+		$count = $this->input->get('count');
+		$correct_answer = $this->queries->get_question_answer($questionId, $region);
+		if(strcmp($answer, $correct_answer['answer1'])){
+			$score++;
+		}
+		if($count < 10){
+			$question_id = rand(1, 24);
+			$result = $this->queries->get_question_info($question_id, $region);
+			$result['score'] = $score;
+			$result['region'] = $region;
+			$count++;
+			$result['count'] = $count;
+			if($result['type'] == 'Multiple'){
+				$this->load->view('multiple',$result);
+			}else{
+				$this->load->view('trueOrFalse',$result);
+			}
+		}else{
+			$this->load->view('', $score);     //load the result view
+		}
 
 	}
 }

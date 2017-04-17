@@ -6,7 +6,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
+    <script>
+        $(function(){
+            $("#next_question").click(function(){
+                var questionId = $("#question_id").val();
+                var region = $("#region").val();
+                var score = $("#score").val();
+                var count = $("#count").val();
+                var answer = $("input[name='options']:checked").val();
+                window.location.href = "nextQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
+            });
+        });
+    </script>
 </head>
 <style>
     .header {
@@ -50,11 +63,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h1>Know Culture</h1>
 </div>
 <div class="questionDisplay">
-    <form class="form-horizontal" role="form">
+    <input type="hidden" id="question_id" value="<?php echo $id;?>">
+    <input type="hidden" id="region" value="<?php echo $region;?>">
+    <input type="hidden" id="score" value="<?php echo $score;?>">
+    <input type="hidden" id="count" value="<?php echo $count;?>">
+
         <!--The no. and questions here-->
         <div class="form-group">
             <label class="col-lg-2 control-label input-lg" id="no"><h2>1.</h2></label>
-            <label class="col-lg-7 control-label input-lg" name="question"><h2>Which dynasty realized unification of China first in history?
+            <label class="col-lg-7 control-label input-lg" name="question"><h2><?php echo $question;?>
                 </h2></label>
         </div>
         <div class="blankRow"></div>
@@ -62,20 +79,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
             <div>
                 <label class="checkbox-inline" style="background-color: #e38d13;">
-                    <img src="../../image/1.jpg">
-                    <input type="radio" name="options" id="option1" value="option1" checked>Qing Dynasty
+                    <!--<img src="../../image/1.jpg">-->
+                    <input type="radio" name="options" id="option1" value="<?php echo $answer1;?>" checked><?php echo $answer1;?>
                 </label>
                 <label class="checkbox-inline">
-                    <img src="../../image/1.jpg">
-                    <input type="radio" name="options" id="option2" value="option2" checked>Qin Dynasty
+                    <!--<img src="../../image/1.jpg">-->
+                    <input type="radio" name="options" id="option2" value="<?php echo $answer2;?>" checked><?php echo $answer2;?>
                 </label>
                 <label class="checkbox-inline">
-                    <img src="../../image/1.jpg">
-                    <input type="radio" name="options" id="option3" value="option3" checked>Shang Dynasty
+                    <!--<img src="../../image/1.jpg">-->
+                    <input type="radio" name="options" id="option3" value="<?php echo $answer3;?>" checked><?php echo $answer3;?>
                 </label>
                 <label class="checkbox-inline">
-                    <img src="../../image/1.jpg">
-                    <input type="radio" name="options" id="option4" value="option4">Ming Dynasty
+                    <!--<img src="../../image/1.jpg">-->
+                    <input type="radio" name="options" id="option4" value="<?php echo $answer4;?>"><?php echo $answer4;?>
                 </label>
             </div>
             <!--</div>-->
@@ -83,10 +100,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!--<div class="blankRow"></div>-->
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-10 input-lg">
-                <button class="btn btn-info btn-lg input-lg col-lg-3 button" onclick="check()" formaction="POST">OK</button>
+                <button id="next_question" class="btn btn-info btn-lg input-lg col-lg-3 button" onclick="check()" formaction="POST">OK</button>
             </div>
         </div>
-    </form>
+
 </div>
 <div class="footer navbar-fixed-bottom"></div>
 
