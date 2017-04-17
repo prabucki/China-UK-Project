@@ -16,7 +16,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var score = $("#score").val();
                 var count = $("#count").val();
                 var answer = $("input[name='options']:checked").val();
-                window.location.href = "nextQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
+                var status = $("#status").val();
+                if(status == "unmix"){
+                    window.location.href = "nextQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
+                }else{
+                    window.location.href = "nextMixQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
+                }
+
             });
         });
     </script>
@@ -68,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="hidden" id="region" name="region" value="<?php echo $region;?>">
         <input type="hidden" id="score" name="score"  value="<?php echo $score;?>">
         <input type="hidden" id="count" name="count" value="<?php echo $count;?>">
+        <input type="hidden" id="status" name="status" value="<?php echo $status;?>">
         <!--The no. and questions here-->
         <div class="form-group">
             <label class="col-lg-2 control-label input-lg" id="no"><h2>1.</h2></label>

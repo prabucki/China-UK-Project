@@ -32,10 +32,11 @@ class Welcome extends CI_Controller {
 		$result['score'] = $score;
 		$result['region'] = $region;
 		$result['count'] = $count;
+		$result['status'] = "unmix";
 		if($result['type'] == 'Multiple'){
 			$this->load->view('multiple',$result);
 		}else{
-			$this->load->view('trueOrFalse',$result); //test commit
+			$this->load->view('trueOrFalse',$result);
 		}
 	}
 
@@ -56,6 +57,7 @@ class Welcome extends CI_Controller {
 			$result['region'] = $region;
 			$count++;
 			$result['count'] = $count;
+			$result['status'] = "unmix";
 			if($result['type'] == 'Multiple'){
 				$this->load->view('multiple',$result);
 			}else{
@@ -67,6 +69,59 @@ class Welcome extends CI_Controller {
 	}
 
 	public function selectMixQuestions(){
+		$count = 1;
+		$score = $this->input->get('score');
+		$region_id = rand(1, 2);
+		$region = null;
+		if($region_id == 1){
+			$region = "China";
+		}else{
+			$region = "UK";
+		}
+		$question_id = rand(1, 8);
+		$result = $this->queries->get_question_info($question_id, $region);
+		$result['score'] = $score;
+		$result['region'] = $region;
+		$result['count'] = $count;
+		$result['status'] = "mix";
+		if($result['type'] == 'Multiple'){
+			$this->load->view('multiple',$result);
+		}else{
+			$this->load->view('trueOrFalse',$result);
+		}
+	}
 
+	public function nextMixQuestions(){
+		$questionId = $this->input->post('questionId');
+		$score = $this->input->get('score');
+		$region = $this->input->get('region');
+		$answer = $this->input->get('answer');
+		$count = $this->input->get('count');
+		$correct_answer = $this->queries->get_question_answer($questionId, $region);
+		if(strcmp($answer, $correct_answer['answer1'])) {
+			$score++;
+		}
+		if($count <= 10){
+			$region_id = rand(1, 2);
+			if($region_id == 1){
+				$region = "China";
+			}else{
+				$region = "UK";
+			}
+			$question_id = rand(1, 8);
+			$result = $this->queries->get_question_info($question_id, $region);
+			$result['score'] = $score;
+			$result['region'] = $region;
+			$count++;
+			$result['count'] = $count;
+			$result['status'] = "mix";
+			if($result['type'] == 'Multiple'){
+				$this->load->view('multiple',$result);
+			}else{
+				$this->load->view('trueOrFalse',$result);
+			}
+		}else{
+			$this->load->view('', $score);     //load the result view
+		}
 	}
 }
