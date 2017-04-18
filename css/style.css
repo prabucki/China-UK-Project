@@ -1,9 +1,32 @@
-.jumbotron{
-    background-color: cornflowerblue;
+
+body{
+    background: url(../image/Background.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.header{
     color: white;
     padding: 20px;
     margin-top: 2%;
     font: normal small-caps normal 16px/1.4 "Droid Sans Mono";
+    background-color: 0;
+    background: url("../image/Logotype.png") ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 253px;
+}
+
+
+.quiz{
+    color: white;
+    padding: 20px;
+    margin-top: 2%;
+    font: normal small-caps normal 16px/1.4 "Droid Sans Mono";
+    background-color: rgba(192, 192, 192, .5);
 }
 
 .container{
@@ -25,7 +48,6 @@
     padding: 10px;
     transition-duration: 0.4s;
     color: black;
-    /*background-color: ;*/
 }
 
 .buttons_div .buttonC{
