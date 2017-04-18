@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +45,7 @@
     <div class="blankRow"></div>
     <h2 class="col-lg-6">Your score:</h2>
 
-    <div class="h1 col-lg-1" id="score" style="font-size: 80px; line-height: 40px">1</div>
+    <div class="h1 col-lg-1" id="score" style="font-size: 80px; line-height: 40px"><?php echo $score;?></div>
     <!--<a href="answers.html">-->
     <!--<button class="btn btn-info btn-lg input-lg col-lg-4 button">See Correct Answers</button>-->
     <!--</a>-->

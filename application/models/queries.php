@@ -18,6 +18,15 @@ class Queries extends CI_Model {
         return $query->row_array();
     }
 
+    public function get_tf_question_info($question_id, $region) {
+        if($region == 'China'):
+            $query = $this->db->get_where('questions_china_trueorfalse', array('id' => $question_id));
+        elseif($region == 'UK'):
+            $query = $this->db->get_where('questions_uk_trueorfalse', array('id' => $question_id));
+        endif;
+        return $query->row_array();
+    }
+
     public function get_questions_number($region) {
         if($region == 'China'):
             $query = $this->db->query("SELECT * FROM `questions_china`");

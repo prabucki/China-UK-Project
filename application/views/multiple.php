@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var count = $("#count").val();
                 var status = $("#status").val();
                 var answer = $("input[name='options']:checked").val();
-                $.post('showQuestionAnswer', {
+                $.post('showMulQuestionAnswer', {
                     questionId : questionId,
                     region : region,
                     answer : answer
@@ -108,7 +108,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
             <div>
                 <label class="radio-inline choice">
-                    <!--<img src="../../image/1.jpg">-->
+                    <?php
+                        if($pic == 1) {
+                            ?>
+                            <img src="../../image/<?php echo $pic_info; ?>">
+                            <?php
+                        }
+                    ?>
                     <input class="radio" type="radio" name="options" id="option1" value="<?php echo $answer1; ?>"
                            checked><?php echo $answer1; ?>
                 </label>

@@ -25,6 +25,18 @@
 			$("#multipleMix").click(function(){
 				window.location.href="selectMulQuestions?status=1";     //status=1->mix_questions;status=0->unmix_questions
 			});
+
+            $("#trueFalseChinese").click(function(){
+                window.location.href="selectTFQuestions?region=China&status=0";
+            });
+
+            $("#trueFalseUK").click(function(){
+                window.location.href="selectTFQuestions?region=UK&status=0";
+            });
+
+            $("#trueFalseMix").click(function(){
+                window.location.href="selectTFQuestions?status=1";     //status=1->mix_questions;status=0->unmix_questions
+            });
 		});
 	</script>
 
@@ -78,9 +90,9 @@
                             <div class="col-md-6">
                                 <div class="container">
                                     <div class="buttons_div">
-                                        <button class="buttonC" type="button"></button>
-                                        <button class="buttonU" type="button"></button>
-                                        <button class="buttonM" type="button"></button>
+                                        <button id="trueFalseChinese" class="buttonC" type="button"></button>
+                                        <button id="trueFalseUK" class="buttonU" type="button"></button>
+                                        <button id="trueFalseMix" class="buttonM" type="button"></button>
                                     </div>
                                 </div>
                             </div>

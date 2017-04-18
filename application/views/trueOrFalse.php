@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script>
         $(function(){
@@ -14,14 +15,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var region = $("#region").val();
                 var score = $("#score").val();
                 var count = $("#count").val();
-                var answer = "False";
+                var answer = "FALSE";
                 var status = $("#status").val();
-                if(status == "unmix"){
-                    window.location.href = "nextQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
-                }else{
-                    window.location.href = "nextMixQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
-                }
-
+                $.post('showTFQuestionAnswer', {
+                    questionId : questionId,
+                    region : region,
+                    answer : answer
+                },function (response, status, xhr) {
+                    if(response == 1){
+                        score++;
+                        alert("Right!");
+                    }else{
+                        alert("Wrong! The right answer is " + response);
+                    }
+                    window.location.href="nextTFQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + status;
+                });
             });
 
             $("#true").click(function(){
@@ -29,13 +37,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var region = $("#region").val();
                 var score = $("#score").val();
                 var count = $("#count").val();
-                var answer = "True";
+                var answer = "TRUE";
                 var status = $("#status").val();
-                if(status == "unmix"){
-                    window.location.href = "nextQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
-                }else{
-                    window.location.href = "nextMixQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
-                }
+                $.post('showTFQuestionAnswer', {
+                    questionId : questionId,
+                    region : region,
+                    answer : answer
+                },function (response, status, xhr) {
+                    if(response == 1){
+                        score++;
+                        alert("Right!");
+                    }else{
+                        alert("Wrong! The right answer is " + response);
+                    }
+                    window.location.href="nextTFQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + status;
+                });
             });
         });
     </script>
@@ -82,7 +98,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h1>Know Culture</h1>
 </div>
 <div class="questionDisplay">
-    <form class="form-horizontal" role="form">
         <input type="hidden" id="question_id" name="question_id" value="<?php echo $id;?>">
         <input type="hidden" id="region" name="region" value="<?php echo $region;?>">
         <input type="hidden" id="score" name="score"  value="<?php echo $score;?>">
@@ -100,7 +115,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <button id="true" class="btn btn-info btn-lg input-lg col-lg-2 button">True</button>
             </div>
         </div>
-    </form>
 </div>
 <div class="footer navbar-fixed-bottom"></div>
 
