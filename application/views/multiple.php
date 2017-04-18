@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         background-size: 100%;
         z-index: -1;
     }
+
     h1 {
         font-size: 60px;
         margin: 0px;
@@ -48,22 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         line-height: 120px;
         color: white;
     }
+
     .questionDisplay {
         text-align: center;
-        margin: 100px 280px;
+        margin: 10% 20%;
         opacity: 0.9;
         /*filter:alpha(opacity=50);*/
         background: gainsboro;
-        width: 800px;
-        height: 400px;
+        width: 60%;
+        height: 60%;
         border-radius: 15px;
-        padding-top: 50px;
+        /*padding-top: 40px;*/
+        padding-top: 5%;
         padding-left: 0px;
         padding-right: 0px;
     }
-    .blankRow{
+
+    .blankRow {
         height: 150px;
-        width:100%;
+        width: 100%;
         /*background-color: brown;*/
         margin: 0px;
     }
@@ -79,7 +83,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         display: inline-block;
         line-height: 24px;
     }
-    .button{
+
+    .button {
         margin: 40px 150px;
         /*background-color: #e38d13;*/
         font-size: 24px;
@@ -92,56 +97,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--</div>-->
 <div class="questionDisplay">
 
-        <input type="hidden" id="question_id" name="question_id" value="<?php echo $id;?>">
-        <input type="hidden" id="region" name="region" value="<?php echo $region;?>">
-        <input type="hidden" id="score" name="score"  value="<?php echo $score;?>">
-        <input type="hidden" id="count" name="count" value="<?php echo $count;?>">
-        <input type="hidden" id="status" name="status" value="<?php echo $status;?>">
-        <!--The no. and questions here-->
-        <div class="form-group">
-            <label class="col-lg-2 control-label input-lg" id="no"><h2>1.</h2></label>
-            <label class="col-lg-8 control-label input-lg" name="question"><h2><?php echo $question; ?>
-                </h2></label>
-        </div>
-        <div class="blankRow"></div>
-        <div class="form-group">
-            <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
-            <div>
-                <label class="radio-inline choice">
-                    <?php
-                        if($pic == 1) {
-                            ?>
-                            <img src="../../image/<?php echo $pic_info; ?>">
-                            <?php
-                        }
+    <input type="hidden" id="question_id" name="question_id" value="<?php echo $id;?>">
+    <input type="hidden" id="region" name="region" value="<?php echo $region;?>">
+    <input type="hidden" id="score" name="score"  value="<?php echo $score;?>">
+    <input type="hidden" id="count" name="count" value="<?php echo $count;?>">
+    <input type="hidden" id="status" name="status" value="<?php echo $status;?>">
+    <!--The no. and questions here-->
+    <div class="form-group">
+        <label class="col-lg-2 control-label input-lg" id="no"><h2>1.</h2></label>
+        <label class="col-lg-8 control-label input-lg" name="question"><h2><?php echo $question; ?>
+            </h2></label>
+    </div>
+    <div class="blankRow"></div>
+    <div class="form-group">
+        <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
+        <div>
+            <label class="radio-inline choice">
+                <?php
+                if($pic == 1) {
                     ?>
-                    <input class="radio" type="radio" name="options" id="option1" value="<?php echo $answer1; ?>"
-                           checked><?php echo $answer1; ?>
-                </label>
-                <label class="radio-inline choice">
-                    <!--<img src="../../image/1.jpg">-->
-                    <input class="radio" type="radio" name="options" id="option2"
-                           value="<?php echo $answer2; ?>"><?php echo $answer2; ?>
-                </label>
-                <label class="radio-inline choice">
-                    <!--<img src="../../image/1.jpg">-->
-                    <input class="radio" type="radio" name="options" id="option3"
-                           value="<?php echo $answer3; ?>"><?php echo $answer3; ?>
-                </label>
-                <label class="radio-inline choice">
-                    <!--<img src="../../image/1.jpg">-->
-                    <input class="radio" type="radio" name="options" id="option4"
-                           value="<?php echo $answer4; ?>"><?php echo $answer4; ?>
-                </label>
-            </div>
-            <!--</div>-->
+                    <img src="../../image/<?php echo $pic_info; ?>">
+                    <?php
+                }
+                ?>
+                <input class="radio" type="radio" name="options" id="option1" value="<?php echo $answer1; ?>"
+                       checked><?php echo $answer1; ?>
+            </label>
+            <label class="radio-inline choice">
+                <!--<img src="../../image/1.jpg">-->
+                <input class="radio" type="radio" name="options" id="option2"
+                       value="<?php echo $answer2; ?>"><?php echo $answer2; ?>
+            </label>
+            <label class="radio-inline choice">
+                <!--<img src="../../image/1.jpg">-->
+                <input class="radio" type="radio" name="options" id="option3"
+                       value="<?php echo $answer3; ?>"><?php echo $answer3; ?>
+            </label>
+            <label class="radio-inline choice">
+                <!--<img src="../../image/1.jpg">-->
+                <input class="radio" type="radio" name="options" id="option4"
+                       value="<?php echo $answer4; ?>"><?php echo $answer4; ?>
+            </label>
         </div>
-        <!--<div class="blankRow"></div>-->
-        <div class="form-group">
-            <div class="col-lg-offset-1 input-lg">
-                <button id="next_question" class="btn btn-info btn-lg input-lg col-lg-6 button">NEXT</button>
-            </div>
+        <!--</div>-->
+    </div>
+    <!--<div class="blankRow"></div>-->
+    <div class="form-group">
+        <div class="col-lg-offset-1 input-lg">
+            <button id="next_question" class="btn btn-info btn-lg input-lg col-lg-6 button">NEXT</button>
         </div>
+    </div>
 
 </div>
 <!--<div class="footer navbar-fixed-bottom"></div>-->
