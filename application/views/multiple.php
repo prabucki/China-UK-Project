@@ -56,10 +56,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-top: 30px;
     }
     .blankRow{
-        height:60px;
+        height: 150px;
         width:100%;
         /*background-color: brown;*/
         margin: 0px;
+    }
+
+    .choice {
+        margin: 0 40px;
     }
     .button{
         margin: 40px 450px;
@@ -93,19 +97,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="form-group">
             <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
             <div>
-                <label class="checkbox-inline" style="background-color: #e38d13;">
+                <label class="checkbox-inline choice">
                     <!--<img src="../../image/1.jpg">-->
                     <input type="radio" name="options" id="option1" value="<?php echo $answer1;?>" checked><?php echo $answer1;?>
                 </label>
-                <label class="checkbox-inline">
+                <label class="checkbox-inline choice">
                     <!--<img src="../../image/1.jpg">-->
-                    <input type="radio" name="options" id="option2" value="<?php echo $answer2;?>" checked><?php echo $answer2;?>
+                    <input type="radio" name="options" id="option2"
+                           value="<?php echo $answer2; ?>"><?php echo $answer2; ?>
                 </label>
-                <label class="checkbox-inline">
+                <label class="checkbox-inline choice">
                     <!--<img src="../../image/1.jpg">-->
-                    <input type="radio" name="options" id="option3" value="<?php echo $answer3;?>" checked><?php echo $answer3;?>
+                    <input type="radio" name="options" id="option3"
+                           value="<?php echo $answer3; ?>"><?php echo $answer3; ?>
                 </label>
-                <label class="checkbox-inline">
+                <label class="checkbox-inline choice">
                     <!--<img src="../../image/1.jpg">-->
                     <input type="radio" name="options" id="option4" value="<?php echo $answer4;?>"><?php echo $answer4;?>
                 </label>

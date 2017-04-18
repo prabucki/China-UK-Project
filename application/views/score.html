@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../../js/bootstrap.js"></script>
+</head>
+<style>
+    body {
+        background-image: url("../../image/Background.jpg");
+        background-size: 100%;
+        z-index: -1;
+    }
+
+    .scoreDisplay {
+        text-align: center;
+        margin: 50px 300px;
+        padding: 0;
+        /*background-color: white;*/
+        background-image: url("../../image/poster.gif");
+        background-size: 90%;
+        width: 800px;
+        height: 680px;
+        z-index: 20;
+    }
+
+    .blankRow {
+        height: 380px;
+        width: 100%;
+        /*background-color: brown;*/
+        margin: 0px;
+        z-index: 50;
+    }
+
+    /*.button{*/
+    /*margin: 80px 450px;*/
+    /*!*background-color: #e38d13;*!*/
+    /*}*/
+</style>
+<body>
+<div class="scoreDisplay">
+    <div class="blankRow"></div>
+    <h2 class="col-lg-6">Your score:</h2>
+
+    <div class="h1 col-lg-1" id="score" style="font-size: 80px; line-height: 40px">1</div>
+    <!--<a href="answers.html">-->
+    <!--<button class="btn btn-info btn-lg input-lg col-lg-4 button">See Correct Answers</button>-->
+    <!--</a>-->
+</div>
+
+</body>
+</html>
