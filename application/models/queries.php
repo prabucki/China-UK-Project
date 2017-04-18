@@ -9,11 +9,11 @@ class Queries extends CI_Model {
     | -------------------------------------------------------------------
     */
 
-    public function get_question_info($question_id, $region) {
+    public function get_multiple_question_info($question_id, $region) {
         if($region == 'China'):
-            $query = $this->db->get_where('questions_china', array('id' => $question_id));
+            $query = $this->db->get_where('questions_china_multiple', array('id' => $question_id));
         elseif($region == 'UK'):
-            $query = $this->db->get_where('questions_uk', array('id' => $question_id));
+            $query = $this->db->get_where('questions_uk_multiple', array('id' => $question_id));
         endif;
         return $query->row_array();
     }

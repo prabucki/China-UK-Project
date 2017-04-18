@@ -23,46 +23,70 @@ class Welcome extends CI_Controller {
 		$this->load->view('vwWelcome');//load welcome screen
 	}
 
-	public function selectQuestions(){
-		$count = 1;
-		$score = $this->input->get('score');
-		$region = $this->input->get('region');
-		$question_id = rand(1, 8);
-		$result = $this->queries->get_question_info($question_id, $region);
-		$result['score'] = $score;
-		$result['region'] = $region;
-		$result['count'] = $count;
-		$result['status'] = "unmix";
-		if($result['type'] == 'Multiple'){
-			$this->load->view('multiple',$result);
+	public function showQuestionAnswer(){
+		$questionId = $this->input->post('questionId');
+		$region = $this->input->post('region');
+		$answer = $this->input->post('answer');
+		$result = $this->queries->get_multiple_question_info($questionId, $region);
+		$str = 1;
+		if(strcmp(trim($answer), trim($result['answer1'])) == 0){
+			echo $str;
 		}else{
-			$this->load->view('trueOrFalse',$result);
+			$str = $result['answer1'];
+			echo $str;
 		}
 	}
 
-	public function nextQuestions(){
-		$questionId = $this->input->post('questionId');
+	public function selectMulQuestions(){
+		$score = 0;
+		$count = 1;
+		$region = $this->input->get('region');
+		$status = $this->input->get('status');
+		$question_id = rand(1, 8);
+		if($status == 1){
+			$region_id = rand(1, 2);
+			if($region_id == 1){
+				$region = 'China';
+				$result = $this->queries->get_multiple_question_info($question_id, $region);
+			}else{
+				$region = 'UK';
+				$result = $this->queries->get_multiple_question_info($question_id, $region);
+			}
+		}else{
+			$result = $this->queries->get_multiple_question_info($question_id, $region);
+		}
+		$result['score'] = $score;
+		$result['region'] = $region;
+		$result['count'] = $count;
+		$result['status'] = $status;
+		$this->load->view('multiple',$result);
+	}
+
+	public function nextMulQuestions(){
 		$score = $this->input->get('score');
 		$region = $this->input->get('region');
-		$answer = $this->input->get('answer');
 		$count = $this->input->get('count');
-		$correct_answer = $this->queries->get_question_answer($questionId, $region);
-		if(strcmp($answer, $correct_answer['answer1'])) {
-			$score++;
-		}
-		if($count <= 10){
-			$question_id = rand(1, 8);
-			$result = $this->queries->get_question_info($question_id, $region);
+		$status = $this->input->get('status');
+		$question_id = rand(1, 8);
+		if($count < 10){
+			if($status == 1){
+				$region_id = rand(1, 2);
+				if($region_id == 1){
+					$region = 'China';
+					$result = $this->queries->get_multiple_question_info($question_id, $region);
+				}else{
+					$region = 'UK';
+					$result = $this->queries->get_multiple_question_info($question_id, $region);
+				}
+			}else{
+				$result = $this->queries->get_multiple_question_info($question_id, $region);
+			}
 			$result['score'] = $score;
 			$result['region'] = $region;
 			$count++;
 			$result['count'] = $count;
-			$result['status'] = "unmix";
-			if($result['type'] == 'Multiple'){
-				$this->load->view('multiple',$result);
-			}else{
-				$this->load->view('trueOrFalse',$result);
-			}
+			$result['status'] = $status;
+			$this->load->view('multiple',$result);
 		}else{
 			$this->load->view('', $score);     //load the result view
 		}

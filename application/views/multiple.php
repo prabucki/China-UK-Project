@@ -15,13 +15,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var region = $("#region").val();
                 var score = $("#score").val();
                 var count = $("#count").val();
-                var answer = $("input[name='options']:checked").val();
                 var status = $("#status").val();
-                if(status == "unmix"){
-                    window.location.href = "nextQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
-                }else{
-                    window.location.href = "nextMixQuestions?questionId=" + questionId + "&region=" + region + "&score=" + score + "&answer=" + answer + "&count=" + count;
-                }
+                var answer = $("input[name='options']:checked").val();
+                $.post('showQuestionAnswer', {
+                    questionId : questionId,
+                    region : region,
+                    answer : answer
+                },function (response, status, xhr) {
+                    if(response == 1){
+                        score++;
+                        alert("Right!");
+                    }else{
+                        alert("Wrong! The right answer is " + response);
+                    }
+                    window.location.href="nextMulQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + status;
+                });
 
             });
         });

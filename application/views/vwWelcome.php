@@ -14,21 +14,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 		$(function(){
-			$("#gameOneChinese").click(function(){
-				var score = 0;
-				var region = "China";
-				window.location.href="selectQuestions?score="+score+"&region="+region;
+			$("#multipleChinese").click(function(){
+				window.location.href="selectMulQuestions?region=China&status=0";
 			});
 
-			$("#gameOneUK").click(function(){
-				var score = 0;
-				var region = "UK";
-				window.location.href="selectQuestions?score="+score+"&region="+region;
+			$("#multipleUK").click(function(){
+				window.location.href="selectMulQuestions?region=UK&status=0";
 			});
 
-			$("#gameOneMix").click(function(){
-				var score = 0;
-				window.location.href="selectMixQuestions?score="+score;
+			$("#multipleMix").click(function(){
+				window.location.href="selectMulQuestions?status=1";     //status=1->mix_questions;status=0->unmix_questions
 			});
 		});
 	</script>
@@ -63,9 +58,9 @@
                                 <div class="col-md-6">
                                     <div class="container">
                                         <div class="buttons_div">
-                                            <button id="gameOneChinese" class="buttonC" type="button"></button>
-                                            <button id="gameOneUK" class="buttonU" type="button"></button>
-                                            <button id="gameOneMix" class="buttonM" type="button"></button>
+                                            <button id="multipleChinese" class="buttonC" type="button"></button>
+                                            <button id="multipleUK" class="buttonU" type="button"></button>
+                                            <button id="multipleMix" class="buttonM" type="button"></button>
                                         </div>
                                     </div>
                                 </div>
