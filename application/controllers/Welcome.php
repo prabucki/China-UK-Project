@@ -41,7 +41,7 @@ class Welcome extends CI_Controller {
 			$this->load->view('multiple',$result);
 			//echo $result['question'];
 		}else{
-			$this->load->view('trueOrFalse',$result);
+			$this->load->view('trueOrFalse',$result); //test commit
 		}
 	}
 
