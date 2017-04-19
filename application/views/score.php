@@ -10,11 +10,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <style>
     body {
-        background-image: url("../../image/Background.jpg");
-        background-size: 100%;
-        z-index: -1;
+        background: url("../../image/Qbg.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 
+    .header {
+        margin: 20px 20%;
+    }
     .scoreDisplay {
         text-align: center;
         margin: 50px 300px;
@@ -41,6 +46,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     /*}*/
 </style>
 <body>
+<div class="header">
+    <a href="vwWelcome.php">
+        <img src="../../image/Logotype.png">
+    </a>
+</div>
 <div class="scoreDisplay">
     <div class="blankRow"></div>
     <h2 class="col-lg-6">Your score:</h2>

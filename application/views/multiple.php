@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script>
-        $(function(){
-            $("#next_question").click(function(){
+        $(function () {
+            $("#next_question").click(function () {
                 var questionId = $("#question_id").val();
                 var region = $("#region").val();
                 var score = $("#score").val();
@@ -37,22 +37,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <style>
     body {
-        background-image: url("../../image/map.jpg");
-        background-size: 100%;
-        z-index: -1;
+        background: url("../../image/Qbg.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 
-    h1 {
-        font-size: 60px;
-        margin: 0px;
-        padding: 0px;
-        line-height: 120px;
-        color: white;
+    .header {
+        margin: 20px 20%;
     }
-
     .questionDisplay {
         text-align: center;
-        margin: 10% 20%;
+        margin: 5% 20%;
         opacity: 0.9;
         /*filter:alpha(opacity=50);*/
         background: gainsboro;
@@ -66,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 
     .blankRow {
-        height: 150px;
+        height: 110px;
         width: 100%;
         /*background-color: brown;*/
         margin: 0px;
@@ -92,9 +89,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 </style>
 <body>
-<!--<div class="header">-->
-<!--    <h1>Know Culture</h1>-->
-<!--</div>-->
+<div class="header">
+    <a href="vwWelcome.php">
+        <img src="../../image/Logotype.png">
+    </a>
+</div>
 <div class="questionDisplay">
 
     <input type="hidden" id="question_id" name="question_id" value="<?php echo $id;?>">
@@ -109,17 +108,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </h2></label>
     </div>
     <div class="blankRow"></div>
+    <?php
+    if($pic == 1) {
+        ?>
+        <img class="img" src="../../image/<?php echo $pic_info; ?>">
+        <?php
+    }
+    ?>
+    <img class="img" src=""><br>
     <div class="form-group">
         <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
         <div>
             <label class="radio-inline choice">
-                <?php
-                if($pic == 1) {
-                    ?>
-                    <img src="../../image/<?php echo $pic_info; ?>">
-                    <?php
-                }
-                ?>
+                <!--<img src="../../image/1.jpg">-->
                 <input class="radio" type="radio" name="options" id="option1" value="<?php echo $answer1; ?>"
                        checked><?php echo $answer1; ?>
             </label>
