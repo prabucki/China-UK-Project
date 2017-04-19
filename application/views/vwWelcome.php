@@ -54,9 +54,7 @@
             <div class="col-md-8">
 
                 <div class="row">
-                    <div class="jumbotron" align="centre">
-                            <h1>Know Culture</h1>
-                            <p>The #1 site for English & Chinese culture quizes </p>
+                    <div class="jumbotron container-fluid header" align="centre">
                     </div>
                 </div>
 

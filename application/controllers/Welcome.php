@@ -18,6 +18,10 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function test(){
+		echo "test";
+	}
+
 	public function index()
 	{
 		$this->load->view('vwWelcome');//load welcome screen
@@ -28,7 +32,7 @@ class Welcome extends CI_Controller {
 		$count = 1;
 		$region = $this->input->get('region');
 		$status = $this->input->get('status');
-		$question_id = rand(1, 24);
+		$question_id = rand(1, 25);
 		if($status == 1){
 			$region_id = (rand(1, 2));
 			if($region_id == 1){
@@ -54,10 +58,10 @@ class Welcome extends CI_Controller {
 		$answer = $this->input->post('answer');
 		$result = $this->queries->get_multiple_question_info($questionId, $region);
 		$str = 1;
-		if(strcmp(trim($answer), trim($result['answer1'])) == 0){
+		if(strcmp(trim($answer), trim($result['answer'])) == 0){
 			echo $str;
 		}else{
-			$str = $result['answer1'];
+			$str = $result['answer'];
 			echo $str;
 		}
 	}
@@ -67,7 +71,7 @@ class Welcome extends CI_Controller {
 		$region = $this->input->get('region');
 		$count = $this->input->get('count');
 		$status = $this->input->get('status');
-		$question_id = rand(1, 24);
+		$question_id = rand(1, 25);
 		if($count < 10){
 			if($status == 1){
 				$region_id = rand(1, 2);
@@ -85,10 +89,10 @@ class Welcome extends CI_Controller {
 			$result['region'] = $region;
 			$count++;
 			$result['count'] = $count;
-			$result['status'] = $status;
+			$result['status'] = (string)$status;
 			$this->load->view('multiple',$result);
 		}else{
-			$result['score'] = $score;
+			$result['score'] = $score*10;
 			$this->load->view('score', $result);     //load the result view
 		}
 	}
@@ -158,7 +162,7 @@ class Welcome extends CI_Controller {
 			$result['status'] = $status;
 			$this->load->view('trueOrFalse',$result);
 		}else{
-			$result['score'] = $score;
+			$result['score'] = $score*10;
 			$this->load->view('score', $result);     //load the result view
 		}
 	}

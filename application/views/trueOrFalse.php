@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var score = $("#score").val();
                 var count = $("#count").val();
                 var answer = "FALSE";
-                var status = $("#status").val();
+                var mark = $("#status").val();
                 $.post('showTFQuestionAnswer', {
                     questionId : questionId,
                     region : region,
@@ -24,11 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 },function (response, status, xhr) {
                     if(response == 1){
                         score++;
-                        alert("Right!");
+                        //alert("Right!");
                     }else{
                         alert("Wrong! The right answer is " + response);
                     }
-                    window.location.href="nextTFQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + status;
+                    window.location.href="nextTFQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + mark;
                 });
             });
 
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var score = $("#score").val();
                 var count = $("#count").val();
                 var answer = "TRUE";
-                var status = $("#status").val();
+                var mark = $("#status").val();
                 $.post('showTFQuestionAnswer', {
                     questionId : questionId,
                     region : region,
@@ -46,11 +46,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 },function (response, status, xhr) {
                     if(response == 1){
                         score++;
-                        alert("Right!");
+                        //alert("Right!");
                     }else{
                         alert("Wrong! The right answer is " + response);
                     }
-                    window.location.href="nextTFQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + status;
+                    window.location.href="nextTFQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + mark;
                 });
             });
         });
@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         padding: 30px 0;
     }
     .blankRow{
-        height: 90px;
+        height: 150px;
         width:100%;
         /*background-color: brown;*/
         margin: 0px;
@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 <body>
 <div class="header">
-    <a href="vwWelcome.php">
+    <a href="http://121.42.57.140/China-UK-Project/index.php/Welcome/index">
         <img src="../../image/Logotype.png">
     </a>
 </div>
@@ -107,8 +107,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="hidden" id="status" name="status" value="<?php echo $status;?>">
         <!--The no. and questions here-->
         <div class="form-group">
-            <label class="col-lg-3 control-label input-lg" id="no"><h2>1.</h2></label>
-            <label class="col-lg-3 control-label input-lg" name="question"><h2><?php echo $question; ?></h2></label>
+            <label class="col-lg-3 control-label input-lg" id="no"><h2><?php echo $count;?>.</h2></label>
+            <label class="col-lg-6 control-label input-lg" name="question"><h2><?php echo $question; ?></h2></label>
         </div>
         <div class="blankRow"></div>
         <div class="form-group">

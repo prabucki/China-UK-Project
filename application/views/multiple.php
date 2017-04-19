@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var region = $("#region").val();
                 var score = $("#score").val();
                 var count = $("#count").val();
-                var status = $("#status").val();
+                var mark = $("#status").val();
                 var answer = $("input[name='options']:checked").val();
                 $.post('showMulQuestionAnswer', {
                     questionId : questionId,
@@ -24,11 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 },function (response, status, xhr) {
                     if(response == 1){
                         score++;
-                        alert("Right!");
+                        //alert("Right!");
                     }else{
                         alert("Wrong! The right answer is " + response);
                     }
-                    window.location.href="nextMulQuestions?region=" + region + "&score=" + score + "&count=" + count +"&status=" + status;
+                    window.location.href="nextMulQuestions?region=" + region + "&score=" + score + "&status=" + mark + "&count=" + count ;
                 });
 
             });
@@ -36,8 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </script>
 </head>
 <style>
-    body {
-        background: url("../../image/Qbg.jpg") no-repeat center center;
+    body{
+        background: url(../../image/que_background.jpg) no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 
     .blankRow {
-        height: 110px;
+        height: 150px;
         width: 100%;
         /*background-color: brown;*/
         margin: 0px;
@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 <body>
 <div class="header">
-    <a href="vwWelcome.php">
+    <a href="http://121.42.57.140/China-UK-Project/index.php/Welcome/index">
         <img src="../../image/Logotype.png">
     </a>
 </div>
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="hidden" id="status" name="status" value="<?php echo $status;?>">
     <!--The no. and questions here-->
     <div class="form-group">
-        <label class="col-lg-2 control-label input-lg" id="no"><h2>1.</h2></label>
+        <label class="col-lg-2 control-label input-lg" id="no"><h2><?php echo $count;?>.</h2></label>
         <label class="col-lg-8 control-label input-lg" name="question"><h2><?php echo $question; ?>
             </h2></label>
     </div>
@@ -112,30 +112,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if($pic == 1) {
         ?>
         <img class="img" src="../../image/<?php echo $pic_info; ?>">
+        <br>
         <?php
     }
     ?>
-    <img class="img" src=""><br>
     <div class="form-group">
         <!--<div class="col-lg-offset-1 col-lg-10 input-lg" style="background-color: orange;">-->
         <div>
             <label class="radio-inline choice">
-                <!--<img src="../../image/1.jpg">-->
                 <input class="radio" type="radio" name="options" id="option1" value="<?php echo $answer1; ?>"
                        checked><?php echo $answer1; ?>
             </label>
             <label class="radio-inline choice">
-                <!--<img src="../../image/1.jpg">-->
                 <input class="radio" type="radio" name="options" id="option2"
                        value="<?php echo $answer2; ?>"><?php echo $answer2; ?>
             </label>
             <label class="radio-inline choice">
-                <!--<img src="../../image/1.jpg">-->
                 <input class="radio" type="radio" name="options" id="option3"
                        value="<?php echo $answer3; ?>"><?php echo $answer3; ?>
             </label>
             <label class="radio-inline choice">
-                <!--<img src="../../image/1.jpg">-->
                 <input class="radio" type="radio" name="options" id="option4"
                        value="<?php echo $answer4; ?>"><?php echo $answer4; ?>
             </label>

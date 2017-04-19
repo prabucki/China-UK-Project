@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     .scoreDisplay {
         text-align: center;
-        margin: 50px 300px;
+        margin: 60px 300px;
         padding: 0;
         /*background-color: white;*/
         background-image: url("../../image/poster.gif");
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 <body>
 <div class="header">
-    <a href="vwWelcome.php">
+    <a href="http://121.42.57.140/China-UK-Project/index.php/Welcome/index">
         <img src="../../image/Logotype.png">
     </a>
 </div>
