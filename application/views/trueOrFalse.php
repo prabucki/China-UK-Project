@@ -42,13 +42,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <style>
     body {
-        background-image: url("../../image/map.jpg");
-        background-size: 100%;
-        z-index: -1;
+        background: url("../../image/Qbg.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .header {
+        margin: 20px 20%;
     }
     .questionDisplay {
         text-align: center;
-        margin: 10% 20%;
+        margin: 5% 20%;
         opacity: 0.9;
         /*filter:alpha(opacity=50);*/
         background: gainsboro;
@@ -72,9 +78,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 </style>
 <body>
-<!--<div class="header">-->
-<!--    <h1>Know Culture</h1>-->
-<!--</div>-->
+<div class="header">
+    <a href="vwWelcome.php">
+        <img src="../../image/Logotype.png">
+    </a>
+</div>
 <div class="questionDisplay">
     <form class="form-horizontal" role="form">
         <input type="hidden" id="question_id" name="question_id" value="<?php echo $id;?>">
