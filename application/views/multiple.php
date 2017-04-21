@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }else{
                         alert("Wrong! The right answer is " + response);
                     }
-                    window.location.href="nextMulQuestions?region=" + region + "&score=" + score + "&status=" + mark + "&count=" + count ;
+                    window.location.href="nextMulQuestions?region=" + region + "&score=" + score + "&status=" + mark + "&count=" + count;
                 });
 
             });
@@ -86,6 +86,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         /*background-color: #e38d13;*/
         font-size: 24px;
         line-height: 24px;
+    }
+
+    .img{
+        margin: 10px auto;
+        width: 380px;
+        height: 300px;
     }
 </style>
 <body>

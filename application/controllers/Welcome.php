@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
 		$count = 1;
 		$region = $this->input->get('region');
 		$status = $this->input->get('status');
-		$question_id = rand(1, 25);
+		$question_id = (int)(rand(100, 2500)/100);
 		if($status == 1){
 			$region_id = (rand(1, 2));
 			if($region_id == 1){
@@ -49,6 +49,7 @@ class Welcome extends CI_Controller {
 		$result['region'] = $region;
 		$result['count'] = $count;
 		$result['status'] = $status;
+		$result['done'] = $question_id.",";
 		$this->load->view('multiple', $result);
 	}
 
@@ -71,8 +72,8 @@ class Welcome extends CI_Controller {
 		$region = $this->input->get('region');
 		$count = $this->input->get('count');
 		$status = $this->input->get('status');
-		$question_id = rand(1, 25);
-		if($count < 10){
+		$question_id = (int)(rand(100, 2500)/100);
+		if($count < 5){
 			if($status == 1){
 				$region_id = rand(1, 2);
 				if($region_id == 1){
@@ -92,7 +93,7 @@ class Welcome extends CI_Controller {
 			$result['status'] = (string)$status;
 			$this->load->view('multiple',$result);
 		}else{
-			$result['score'] = $score*10;
+			$result['score'] = $score*20;
 			$this->load->view('score', $result);     //load the result view
 		}
 	}
@@ -102,7 +103,7 @@ class Welcome extends CI_Controller {
 		$count = 1;
 		$region = $this->input->get('region');
 		$status = $this->input->get('status');
-		$question_id = rand(1, 22);
+		$question_id = (int)(rand(100, 2200)/100);
 		if($status == 1){
 			$region_id = (rand(1, 2));
 			if($region_id == 1){
@@ -141,8 +142,8 @@ class Welcome extends CI_Controller {
 		$region = $this->input->get('region');
 		$count = $this->input->get('count');
 		$status = $this->input->get('status');
-		$question_id = rand(1, 22);
-		if($count < 10){
+		$question_id = (int)(rand(100, 2200)/100);
+		if($count < 5){
 			if($status == 1){
 				$region_id = rand(1, 2);
 				if($region_id == 1){
@@ -162,7 +163,7 @@ class Welcome extends CI_Controller {
 			$result['status'] = $status;
 			$this->load->view('trueOrFalse',$result);
 		}else{
-			$result['score'] = $score*10;
+			$result['score'] = $score*20;
 			$this->load->view('score', $result);     //load the result view
 		}
 	}
